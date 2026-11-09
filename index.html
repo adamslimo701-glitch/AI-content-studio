@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Studio</title>
+<style>
+body{font-family:Arial,sans-serif;background:#100d20;color:white;margin:0;padding:20px}
+.container{max-width:600px;margin:auto}
+h1{color:#d8b4fe;text-align:center}
+.card{background:#211a35;padding:20px;border-radius:15px;margin-top:20px}
+label{display:block;margin:15px 0 7px}
+select,textarea,input{width:100%;padding:12px;border-radius:8px;border:0;box-sizing:border-box;font-size:16px}
+button{background:#a855f7;color:white;border:0;padding:14px;border-radius:8px;width:100%;font-size:16px;margin-top:15px;font-weight:bold}
+#result{white-space:pre-wrap;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>✨ AI Content Studio</h1>
+<p style="text-align:center">Create amazing social media content!</p>
+
+<div class="card">
+<h2>Content Generator</h2>
+
+<label>Choose content type</label>
+<select id="type">
+<option>TikTok Video Script</option>
+<option>Viral Caption</option>
+<option>Instagram Post</option>
+<option>YouTube Description</option>
+<option>Business Advertisement</option>
+<option>Hashtags</option>
+</select>
+
+<label>Enter your topic</label>
+<textarea id="topic" rows="3" placeholder="Example: Online business ideas"></textarea>
+
+<button onclick="generate()">Generate Content</button>
+
+<h3>Your Content</h3>
+<div id="result">Your generated content will appear here.</div>
+<button onclick="copyText()">Copy Content</button>
+</div>
+</div>
+
+<script>
+function generate(){
+let type=document.getElementById("type").value;
+let topic=document.getElementById("topic").value.trim();
+if(!topic){alert("Please enter a topic first!");return;}
+
+let result="";
+
+if(type==="TikTok Video Script"){
+result=`🎬 VIDEO SCRIPT: ${topic}
+
+HOOK:
+Stop scrolling! You need to know this!
+
+MAIN CONTENT:
+Today we are talking about ${topic}.
+Here are three important things you should know.
+
+1. Start with a clear plan.
+2. Take action consistently.
+3. Keep learning and improving.
+
+CALL TO ACTION:
+Follow for more useful tips!`;
+}
+else if(type==="Viral Caption"){
+result=`🔥 ${topic}!
+
+Small steps can lead to big results. Start today, stay consistent and never stop learning!
+
+Follow for more inspiration!`;
+}
+else if(type==="Instagram Post"){
+result=`✨ LET'S TALK ABOUT ${topic.toUpperCase()}!
+
+Your journey starts with one step.
+Learn, grow and keep moving forward.
+
+What do you think? Share your thoughts below!`;
+}
+else if(type==="YouTube Description"){
+result=`Welcome to our channel!
+
+In this video, we explore ${topic}.
+
+Watch until the end for useful tips and information.
+
+Like, subscribe and turn on notifications for more content!`;
+}
+else if(type==="Business Advertisement"){
+result=`📢 DISCOVER ${topic}!
+
+Looking for something valuable?
+Explore ${topic} and discover new possibilities.
+
+Get started today!
+
+Contact us for more information.`;
+}
+else{
+result=`#${topic.replace(/[^a-z0-9]/gi,"")} #ContentCreator #DigitalMarketing #OnlineBusiness #SocialMedia #Trending`;
+}
+
+document.getElementById("result").innerText=result;
+}
+
+function copyText(){
+let text=document.getElementById("result").innerText;
+navigator.clipboard.writeText(text)
+.then(()=>alert("Content copied!"))
+.catch(()=>alert("Please select and copy your content."));
+}
+</script>
+</body>
+  </html>
+  
